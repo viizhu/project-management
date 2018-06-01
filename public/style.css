@@ -33,18 +33,32 @@ td {
   text-align: center;
 }
 
-.working > td {
-  background-color: #AA4B41;
+.working {
+  background-color: #C5E0DC;
 }
 
 .future {
+  background-color: #F7E6CF;
 
 }
 
 .complete {
+  background-color: #FCFBE3;
 
 }
 
 .hold {
+  background-color: #F2C6CB;
 
+}
+
+.colorindex {
+  margin: 20px;
+  text-align: center;
+}
+
+.swatch {
+  margin: 10px;
+  padding: 8px;
+  border: 1px solid #335252;
 }
