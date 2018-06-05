@@ -1,7 +1,8 @@
 var express   = require("express"),
     app       = express(),
     mongoose  = require("mongoose"),
-    Project  = require("./schemas/project");
+    moment    = require("moment"),
+    Project   = require("./schemas/project");
 
 //use yelpcamp database
 mongoose.connect(process.env.DATABASEURL);
@@ -13,6 +14,7 @@ mongoose.connect(process.env.DATABASEURL);
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
+app.locals.moment = moment;
 
 //root route
 app.get("/", function(req, res){
@@ -20,6 +22,8 @@ app.get("/", function(req, res){
     if(err) {
       console.log(err);
     } else{
+      console.log(projects);
+
       res.render("index", {projects: projects});
     }
   });

@@ -1,3 +1,32 @@
-<h1>Project:     <% projects.forEach(function(project){ %>
-            <%= project.title %>
-      <% }); %></h1>
+<% include partials/header %>
+
+<div class="colorindex">
+  <span class="swatch working">Currently Working</span>
+  <span class="swatch future">Future Projects</span>
+  <span class="swatch hold">On Hold</span>
+  <span class="swatch complete">Completed</span>
+</div>
+
+<table>
+  <tr>
+    <th class="proj-title"></th>
+    <th class="proj-start">Target Start Date</th>
+    <th class="proj-request">Request Date</th>
+    <th class="proj-notes">Notes</th>
+    <th class="proj-editdel">Edit/Delete</th>
+  </tr>
+  <% projects.forEach(function(project){ %>
+    <tr class="<%= project.status %>">
+      <td><%= project.title %></td>
+      <td><%= moment(project.startDate).format("MMM Do YYYY"); %></td>
+      <td><%= moment(project.requestDate).format("MMM Do YYYY"); %> %></td>
+      <td><%= project.notes %></td>
+      <td>
+        <i class="fas fa-pencil-alt edit"></i>
+        <i class="fas fa-trash-alt delete"></i>
+      </td>
+    </tr>
+  <% }); %>
+</table>
+
+<% include partials/footer %>

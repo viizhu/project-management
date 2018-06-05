@@ -62,3 +62,15 @@ td {
   padding: 8px;
   border: 1px solid #335252;
 }
+
+.edit {
+  display: block;
+  float: left;
+  width: 50%;
+}
+
+.delete {
+  display: block;
+  float: left;
+  width: 50%;
+}
