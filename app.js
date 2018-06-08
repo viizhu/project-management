@@ -1,7 +1,8 @@
 var express   = require("express"),
     app       = express(),
-    mongoose  = require("mongoose"),
     moment    = require("moment"),
+    bodyParser  = require("body-parser"),
+    mongoose  = require("mongoose"),
     Project   = require("./schemas/project");
 
 //use yelpcamp database
@@ -14,6 +15,7 @@ mongoose.connect(process.env.DATABASEURL);
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({extended: true}));
 app.locals.moment = moment;
 
 //root route
@@ -22,9 +24,25 @@ app.get("/", function(req, res){
     if(err) {
       console.log(err);
     } else{
-      console.log(projects);
-
       res.render("index", {projects: projects});
+    }
+  });
+});
+
+//new route
+app.get("/new", function(req, res){
+  res.render("new")
+});
+
+//create route
+app.post("/", function(req, res){
+  //create project
+  Project.create(req.body.projects, function(err, newProject){
+    if(err){
+      console.log(err);
+    } else {
+      console.log("sent");
+      res.redirect("/");
     }
   });
 });

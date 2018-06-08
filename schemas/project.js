@@ -4,8 +4,7 @@ var mongoose = require("mongoose");
 var projectSchema = new mongoose.Schema({
   title: String,
   startDate: Date,
-  requestDate: Date,
-  pullLeads: Date,
+  requestDate: {type: Date, default: Date.now},
   notes: String,
   status: String
   // author: {

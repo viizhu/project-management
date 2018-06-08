@@ -10,16 +10,16 @@
 <table>
   <tr>
     <th class="proj-title"></th>
-    <th class="proj-start">Target Start Date</th>
     <th class="proj-request">Request Date</th>
+    <th class="proj-start">Target Start Date</th>
     <th class="proj-notes">Notes</th>
-    <th class="proj-editdel">Edit/Delete</th>
+    <th class="proj-edit">Edit/Delete</th>
   </tr>
   <% projects.forEach(function(project){ %>
     <tr class="<%= project.status %>">
       <td><%= project.title %></td>
-      <td><%= moment(project.startDate).format("MMM Do YYYY"); %></td>
-      <td><%= moment(project.requestDate).format("MMM Do YYYY"); %> %></td>
+      <td><%= moment(project.requestDate).format("MMM DD YYYY"); %> %></td>
+      <td><%= moment(project.startDate).format("MMM DD YYYY"); %></td>
       <td><%= project.notes %></td>
       <td>
         <i class="fas fa-pencil-alt edit"></i>
